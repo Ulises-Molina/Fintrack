@@ -78,8 +78,8 @@ function CategoryBreakdown({ reloadFlag }) {
     <div id="category-breackdown" className="relative p-8 border border-white/60 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg shadow-primary/10">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-primary/5 rounded-3xl" />
       
-      <div className="relative flex items-start justify-between gap-4 mb-6">
-        <div>
+      <div className="relative flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
+        <div className="w-full sm:w-auto">
           <div className="flex items-center gap-2 mb-2">
             <span className="size-2 rounded-full bg-primary animate-pulse" />
             <span className="text-sm font-medium text-primary/80">Análisis</span>
@@ -90,10 +90,22 @@ function CategoryBreakdown({ reloadFlag }) {
           <p className="text-sm text-muted-foreground/80 mt-1">
             Cómo se distribuyen tus gastos en este periodo
           </p>
+          {hasData && (
+            <div className="mt-4 text-left px-4 py-2 rounded-2xl bg-white/70 border border-white/50 inline-block sm:hidden">
+              <p className="text-[11px] uppercase tracking-[0.08em] text-muted-foreground/90">
+                Total gastado
+              </p>
+              <p className="text-lg font-semibold text-[#0f172a]">
+                $
+                {total.toLocaleString("es-ES", {
+                  minimumFractionDigits: 0,
+                })}
+              </p>
+            </div>
+          )}
         </div>
-
         {hasData && (
-          <div className="text-right px-4 py-2 rounded-2xl bg-white/70 border border-white/50">
+          <div className="hidden sm:block text-right px-4 py-2 rounded-2xl bg-white/70 border border-white/50">
             <p className="text-[11px] uppercase tracking-[0.08em] text-muted-foreground/90">
               Total gastado
             </p>
@@ -186,7 +198,7 @@ function CategoryBreakdown({ reloadFlag }) {
           </div>
 
           {/* Leyenda / listado */}
-          <div className="flex-1 w-full space-y-2">
+          <div className="flex-1 w-full space-y-3">
             {data.map((item, index) => {
               const color = getColorForIndex(index, data.length)
               const percentage = ((item.value / total) * 100).toFixed(1)
@@ -194,7 +206,7 @@ function CategoryBreakdown({ reloadFlag }) {
               return (
                 <div
                   key={item.name}
-                  className="group flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-white/70 transition-all duration-200 hover:shadow-sm border border-transparent hover:border-white/50"
+                  className="group flex items-center justify-between rounded-2xl px-4 py-3 bg-primary/10 backdrop-blur-sm border border-white/50 hover:bg-primary/20 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <div className="flex items-center gap-3">
                     <span

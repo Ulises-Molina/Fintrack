@@ -21,23 +21,29 @@ function DashboardPage() {
       <div className="fixed -top-40 left-1/2 -z-10 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-primary/8 blur-3xl" />
       <div className="fixed -bottom-48 left-1/4 -z-10 h-[22rem] w-[22rem] rounded-full bg-cyan-200/20 blur-3xl" />
       
-      <main className="container mx-auto px-4 py-8 max-w-7xl relative z-10 mt-20">
-        <div className="space-y-8">
-          <div>
-            <h1 className="text-3xl font-bold text-[#111] tracking-tight mb-2 text-start">Escritorio</h1>
-            <p className="text-muted-foreground text-start">Resumen de tus finanzas personales</p>
+      <main className="container mx-auto px-4 py-6 sm:py-8 max-w-7xl relative z-10 mt-20">
+        <div className="space-y-6 sm:space-y-8">
+          <div className="px-2 sm:px-0">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#111] tracking-tight mb-2 text-start">Escritorio</h1>
+            <p className="text-muted-foreground text-start text-sm sm:text-base">Resumen de tus finanzas personales</p>
           </div>
 
-          <ExpenseSummary reloadFlag={reloadFlag}/>
+          <div className="px-2 sm:px-0">
+            <ExpenseSummary reloadFlag={reloadFlag}/>
+          </div>
 
-          <div className="grid gap-6 lg:grid-cols-1">
+          <div className="grid gap-6 lg:grid-cols-1 px-2 sm:px-0">
             <CategoryBreakdown reloadFlag={reloadFlag} />
           </div>
 
         </div>
 
-        <RecentTransactions  reloadFlag={reloadFlag} />
-        <FinancialSummary />
+        <div className="mt-6 sm:mt-8 px-2 sm:px-0">
+          <RecentTransactions  reloadFlag={reloadFlag} />
+        </div>
+        <div className="px-2 sm:px-0">
+          <FinancialSummary />
+        </div>
       </main>
     </div>
     </>
