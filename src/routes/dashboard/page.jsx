@@ -3,17 +3,23 @@ import ExpenseSummary from "../../components/expense-summary";
 import CategoryBreakdown from "../../components/category-breakdown";
 import RecentTransactions from "../../components/recent-transactions";
 import FinancialSummary from "../../components/financial-summary";
+import FloatingActionButton from "../../components/floating-action-button";
 import { useState } from "react";
 
 function DashboardPage() {
   const [reloadFlag, setReloadFlag] = useState(false)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
    const handleTransactionSaved = () => {
     setReloadFlag((prev) => !prev) // cambia true/false para disparar el useEffect
   }
+
+  const handleOpenDialog = () => {
+    setIsDialogOpen(true)
+  }
   return (
     <>
-    <HeaderDashboard onTransactionSaved={handleTransactionSaved}/>
+    <HeaderDashboard onTransactionSaved={handleTransactionSaved} isDialogOpen={isDialogOpen} setIsDialogOpen={setIsDialogOpen}/>
     <div className="min-h-screen relative">
       {/* Fondo con gradientes y efectos */}
       <div className="fixed inset-0 -z-20 bg-gradient-to-br from-white via-slate-50 to-primary/5" />
@@ -45,6 +51,8 @@ function DashboardPage() {
           <FinancialSummary />
         </div>
       </main>
+      
+      <FloatingActionButton onClick={handleOpenDialog} />
     </div>
     </>
   )
