@@ -6,21 +6,34 @@ export function useAuth() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // 1) obtener usuario actual
-    supabase.auth.getUser().then(({ data, error }) => {
-      if (error) {
+    // Función para obtener la sesión actual
+    const getInitialSession = async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession()
+        if (error) {
+          console.error('Error getting session:', error)
+          setUser(null)
+        } else {
+          setUser(session?.user ?? null)
+        }
+      } catch (error) {
+        console.error('Unexpected error:', error)
         setUser(null)
-      } else {
-        setUser(data.user)
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
-    })
+    }
 
-    // 2) escuchar cambios de auth (login, logout, etc.)
+    // Obtener sesión inicial
+    getInitialSession()
+
+    // Escuchar cambios de auth (login, logout, etc.)
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
+      console.log('Auth state changed:', _event, session?.user?.email)
       setUser(session?.user ?? null)
+      setLoading(false)
     })
 
     return () => {

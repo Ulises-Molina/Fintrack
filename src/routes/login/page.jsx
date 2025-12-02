@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabaseCliente'
 import { useNavigate } from 'react-router-dom'
+import { AuthRedirect } from '../../components/authRedirect'
 
 function Login() {
   const navigate = useNavigate()
@@ -44,7 +45,9 @@ function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] text-[#1a1a1a] flex flex-col">
+    <>
+      <AuthRedirect />
+      <div className="min-h-screen bg-[#f5f5f5] text-[#1a1a1a] flex flex-col">
       <header className="border-b border-[#d9d9d9] bg-white">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
           <Link to="/" className="flex items-center gap-2 font-semibold text-lg">
@@ -171,6 +174,7 @@ function Login() {
         </div>
       </main>
     </div>
+    </>
   )
 }
 

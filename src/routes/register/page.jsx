@@ -2,6 +2,8 @@
 import { TrendingUp } from "lucide-react"
 import { supabase } from "../../lib/supabaseCliente"
 import { useState } from "react"
+import { Link } from "react-router-dom"
+import { AuthRedirect } from "../../components/authRedirect"
 
 function RegisterPage() {
 
@@ -55,7 +57,9 @@ const handleGoogleLogin = async () => {
 }
 
     return (
-  <div className="min-h-screen bg-[#f5f5f5] text-[#1a1a1a] flex flex-col">
+    <>
+      <AuthRedirect />
+      <div className="min-h-screen bg-[#f5f5f5] text-[#1a1a1a] flex flex-col">
     {/* Header */}
     <header className="border-b border-[#d9d9d9] bg-white">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
@@ -204,8 +208,9 @@ const handleGoogleLogin = async () => {
       </div>
     )}
   </div>
-)
+    </>
+  )
 
-  }
+}
 
 export default RegisterPage

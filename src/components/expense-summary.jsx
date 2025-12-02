@@ -78,8 +78,8 @@ function ExpenseSummary({ reloadFlag }) {
   return (
     <div id="expense-summary" className="grid gap-6 md:grid-cols-3">
       {/* Balance total */}
-      <div className="group relative p-6 border border-white/60 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg shadow-primary/10 hover:shadow-xl hover:shadow-primary/15 transition-all duration-300 hover:-translate-y-1">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-primary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="group relative p-6 border border-white/60 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg shadow-primary/10 hover:shadow-xl hover:shadow-primary/15 transition-all duration-300 ease-out hover:scale-[1.02]">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-primary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
         <div className="relative flex items-center justify-between">
           <div className="flex-1">
             <p className="text-sm font-semibold text-muted-foreground/90 text-start">
@@ -105,8 +105,8 @@ function ExpenseSummary({ reloadFlag }) {
       </div>
 
       {/* Ingresos */}
-      <div className="group relative p-6 border border-white/60 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg shadow-green-500/10 hover:shadow-xl hover:shadow-green-500/15 transition-all duration-300 hover:-translate-y-1">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-500/8 via-transparent to-green-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="group relative p-6 border border-white/60 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg shadow-green-500/10 hover:shadow-xl hover:shadow-green-500/15 transition-all duration-300 ease-out hover:scale-[1.02]">
+        <div className="absolute inset-0 bg-gradient-to-br from-green-500/8 via-transparent to-green-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
         <div className="relative flex items-center justify-between">
           <div className="flex-1">
             <p className="text-sm font-semibold text-muted-foreground/90 text-start">
@@ -138,8 +138,8 @@ function ExpenseSummary({ reloadFlag }) {
       </div>
 
       {/* Gastos */}
-      <div className="group relative p-6 border border-white/60 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg shadow-red-500/10 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 hover:-translate-y-1">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-500/8 via-transparent to-red-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="group relative p-6 border border-white/60 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg shadow-red-500/10 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 ease-out hover:scale-[1.02]">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/8 via-transparent to-red-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
         <div className="relative flex items-center justify-between">
           <div className="flex-1">
             <p className="text-sm font-semibold text-muted-foreground/90 text-start">
