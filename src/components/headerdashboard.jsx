@@ -278,6 +278,14 @@ function HeaderDashboard({ onTransactionSaved, isDialogOpen, setIsDialogOpen }) 
           </button>
 
           <button
+            onClick={() => setIsDialogOpen(true)}
+            className="sm:hidden flex h-10 w-10 items-center justify-center rounded-xl cursor-pointer bg-primary text-white shadow-sm shadow-primary/40 transition hover:-translate-y-0.5 hover:bg-primary/80"
+            aria-label="Nueva transacción"
+          >
+            <span className="text-lg font-bold">+</span>
+          </button>
+
+          <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
             className={`flex h-10 w-10 items-center cursor-pointer justify-center rounded-full border border-primary/20 bg-white/70 text-primary shadow-sm transition hover:-translate-y-0.5 hover:border-primary/40 ${
               hasAvatar ? "overflow-hidden p-0" : "font-bold"
@@ -314,7 +322,7 @@ function HeaderDashboard({ onTransactionSaved, isDialogOpen, setIsDialogOpen }) 
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} >
-        <DialogContent className="max-w-md bg-white/70 p-4 sm:p-6 rounded-2xl w-[95vw] sm:w-md mx-4">
+        <DialogContent className="max-w-lg bg-white/70 p-3 sm:p-6 rounded-2xl w-[90vw] sm:w-full mx-auto max-h-[85vh] overflow-y-auto">
           <DialogHeader className="space-y-2">
             <DialogTitle className="flex items-center gap-3 text-xl sm:text-2xl font-semibold text-[#111]">
               <span className="inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-2xl bg-primary/15 text-lg font-bold text-primary">
@@ -326,11 +334,11 @@ function HeaderDashboard({ onTransactionSaved, isDialogOpen, setIsDialogOpen }) 
             </p>
           </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="mt-4 sm:mt-6 space-y-4 sm:space-y-6">
-            <section className="rounded-2xl border border-primary/10 bg-gradient-to-r from-white via-white to-primary/5 px-3 sm:px-4 py-3 shadow-sm backdrop-blur">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm font-medium text-[#333]">
-                <span>Tipo de movimiento</span>
-                <div className="flex items-center gap-2 rounded-xl bg-white/70 p-1 shadow-inner">
+          <form onSubmit={handleSubmit} className="mt-3 sm:mt-6 space-y-3 sm:space-y-6">
+            <section className="rounded-2xl border border-primary/10 bg-gradient-to-r from-white via-white to-primary/5 px-2 sm:px-4 py-3 shadow-sm backdrop-blur">
+              <div className="flex flex-col gap-3 text-sm font-medium text-[#333]">
+                <span className="text-center sm:text-left">Tipo de movimiento</span>
+                <div className="flex items-center justify-center sm:justify-start gap-2 rounded-xl bg-white/70 p-1 shadow-inner">
                   <button
                     type="button"
                     onClick={() => setTransactionType("expense")}
@@ -405,7 +413,7 @@ function HeaderDashboard({ onTransactionSaved, isDialogOpen, setIsDialogOpen }) 
                   </div>
                 ) : categories.length > 0 ? (
                   <div className="rounded-2xl border border-primary/10 bg-white/70 p-3 shadow-inner">
-                    <div className="flex flex-wrap gap-2 max-h-40 sm:max-h-36 overflow-y-auto pr-1">
+                    <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 max-h-40 sm:max-h-36 overflow-y-auto pr-1">
                       {categories.map((item) => {
                         const isSelected = category === item
                         return (
@@ -413,7 +421,7 @@ function HeaderDashboard({ onTransactionSaved, isDialogOpen, setIsDialogOpen }) 
                             key={item}
                             type="button"
                             onClick={() => setCategory(item)}
-                            className={`rounded-xl px-3 py-2 sm:px-3 sm:py-2 text-xs font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
+                            className={`rounded-xl px-2 py-3 sm:px-3 sm:py-2 text-xs font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 justify-center items-center min-h-[44px] sm:min-h-[auto] ${
                               isSelected
                                 ? "bg-primary text-white shadow"
                                 : "bg-white/80 text-[#333] border border-transparent hover:border-primary/40 hover:text-primary"
@@ -437,7 +445,7 @@ function HeaderDashboard({ onTransactionSaved, isDialogOpen, setIsDialogOpen }) 
                 <div className="pt-1">
                   {isAddingCategory ? (
                     <div className="space-y-2 rounded-2xl border border-primary/10 bg-white/80 p-3 shadow-sm">
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                         <input
                           type="text"
                           value={newCategory}
@@ -445,23 +453,25 @@ function HeaderDashboard({ onTransactionSaved, isDialogOpen, setIsDialogOpen }) 
                             setNewCategory(event.target.value)
                             setNewCategoryError("")
                           }}
-                          className="flex-1 rounded-xl border border-transparent bg-white px-2 sm:px-3 py-2 text-sm focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/25"
+                          className="flex-1 rounded-xl border border-transparent bg-white px-3 py-3 text-sm focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/25"
                           placeholder="Nombre de la nueva categoría"
                         />
-                        <button
-                          type="button"
-                          onClick={handleSaveNewCategory}
-                          className="rounded-xl bg-primary px-2 sm:px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/85"
-                        >
-                          Guardar
-                        </button>
-                        <button
-                          type="button"
-                          onClick={handleCancelAddCategory}
-                          className="rounded-xl border border-[#11111133] px-2 sm:px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-white"
-                        >
-                          Cancelar
-                        </button>
+                        <div className="flex gap-2 sm:gap-2">
+                          <button
+                            type="button"
+                            onClick={handleSaveNewCategory}
+                            className="flex-1 sm:flex-none rounded-xl bg-primary px-3 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/85 min-h-[44px]"
+                          >
+                            Guardar
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleCancelAddCategory}
+                            className="flex-1 sm:flex-none rounded-xl border border-[#11111133] px-3 py-3 text-sm font-medium text-muted-foreground transition hover:bg-white min-h-[44px]"
+                          >
+                            Cancelar
+                          </button>
+                        </div>
                       </div>
                       {newCategoryError && (
                         <p className="text-sm text-red-600">{newCategoryError}</p>
@@ -485,13 +495,13 @@ function HeaderDashboard({ onTransactionSaved, isDialogOpen, setIsDialogOpen }) 
               <button
                 type="button"
                 onClick={() => setIsDialogOpen(false)}
-                className="w-full rounded-2xl border border-[#1111111a] bg-white/70 px-4 py-3 text-sm font-semibold text-muted-foreground transition hover:bg-white/90 sm:w-auto"
+                className="w-full rounded-2xl border border-[#1111111a] bg-white/70 px-4 py-3 text-sm font-semibold text-muted-foreground transition hover:bg-white/90 sm:w-auto min-h-[44px]"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="w-full rounded-2xl bg-gradient-to-r from-primary via-primary/90 to-primary px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition hover:shadow-xl sm:w-auto"
+                className="w-full rounded-2xl bg-gradient-to-r from-primary via-primary/90 to-primary px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition hover:shadow-xl sm:w-auto min-h-[44px]"
               >
                 Guardar transacción
               </button>
