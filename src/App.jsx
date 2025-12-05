@@ -7,9 +7,11 @@ import DashboardPage from './routes/dashboard/page'
 import TransactionsPage from './routes/transactions/page'
 import {ProtectedRoute} from './components/protectedRoute'
 import ProfilePage from './routes/profile/page'
+import { Analytics } from "@vercel/analytics/next"
 
 function App() {
   return (
+    <>
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
@@ -18,6 +20,8 @@ function App() {
       <Route path="/transactions" element={<ProtectedRoute><TransactionsPage /></ProtectedRoute>} />
       <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
     </Routes>
+    <Analytics></Analytics>
+    </>
   )
 }
 
