@@ -7,7 +7,7 @@ import DashboardPage from './routes/dashboard/page'
 import TransactionsPage from './routes/transactions/page'
 import {ProtectedRoute} from './components/protectedRoute'
 import ProfilePage from './routes/profile/page'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
