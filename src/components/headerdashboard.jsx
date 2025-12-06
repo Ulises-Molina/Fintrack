@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./dialog"
 import { useAuth } from "../hooks/useAuth"
 import { supabase } from "../lib/supabaseCliente"
-import LoadingIndicator from "./ui/loading-indicator"
 
 const DEFAULT_EXPENSE_CATEGORIES = [
   "Alimentación",

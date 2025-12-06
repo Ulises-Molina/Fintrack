@@ -12,7 +12,7 @@ import {
   HeartPulse,
 } from "lucide-react"
 import { supabase } from "../lib/supabaseCliente"
-import LoadingIndicator from "./ui/loading-indicator"
+import { TransactionSkeleton } from "./ui/skeleton"
 
 const categoryIcons = {
   Alimentación: ShoppingBag,
@@ -131,7 +131,7 @@ export default function RecentTransactions({ reloadFlag }) {
       </div>
 
       {isLoading ? (
-        <LoadingIndicator label="Cargando movimientos..." className="mt-4 sm:mt-6" />
+        <TransactionSkeleton />
       ) : error ? (
         <p className="mt-4 sm:mt-6 text-sm text-red-600">Error: {error}</p>
       ) : items.length === 0 ? (

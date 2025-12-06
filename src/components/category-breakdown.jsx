@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
 import { supabase } from "../lib/supabaseCliente"
-import LoadingIndicator from "./ui/loading-indicator"
+import { CategorySkeleton } from "./ui/skeleton"
 
 // Colores suaves separados en la rueda HSL
 const getColorForIndex = (index, total) => {
@@ -120,9 +120,7 @@ function CategoryBreakdown({ reloadFlag }) {
       </div>
 
       {isLoading ? (
-        <div className="flex justify-center py-8">
-          <LoadingIndicator label="Cargando categorías..." />
-        </div>
+        <CategorySkeleton />
       ) : error ? (
         <p className="text-sm text-red-600">Error: {error}</p>
       ) : !hasData ? (

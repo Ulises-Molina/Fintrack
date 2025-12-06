@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { TrendingDown, TrendingUp, Wallet } from "lucide-react"
 import { supabase } from "../lib/supabaseCliente"
-import LoadingIndicator from "./ui/loading-indicator"
+import { SummaryCardsSkeleton } from "./ui/skeleton"
 
 function ExpenseSummary({ reloadFlag }) {
   const [loading, setLoading] = useState(true)
@@ -63,11 +63,7 @@ function ExpenseSummary({ reloadFlag }) {
   }
 
   if (loading)
-    return (
-      <div className="flex items-center justify-center py-10">
-        <LoadingIndicator label="Cargando resumen..." />
-      </div>
-    )
+    return <SummaryCardsSkeleton />
   if (error) return <p className="text-red-600">Error: {error}</p>
   if (!stats) return null
 

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import HeaderDashboard from "../../components/headerdashboard"
-import LoadingIndicator from "../../components/ui/loading-indicator"
+import { TransactionSkeleton } from "../../components/ui/skeleton"
 import { supabase } from "../../lib/supabaseCliente"
 import {
   ArrowDownLeft,
@@ -191,7 +191,7 @@ function TransactionsPage() {
 
           <section className="rounded-3xl border border-[#11111112] bg-white/70 p-6 shadow-sm backdrop-blur">
             {isLoading ? (
-              <LoadingIndicator label="Cargando transacciones..." className="py-12" />
+              <TransactionSkeleton />
             ) : error ? (
               <div className="rounded-2xl border border-red-200 bg-red-50/80 p-6 text-sm text-red-700">
                 Ocurrió un error al cargar las transacciones: {error}

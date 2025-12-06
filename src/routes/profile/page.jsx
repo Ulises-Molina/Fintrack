@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import HeaderDashboard from "../../components/headerdashboard"
 import { useAuth } from "../../hooks/useAuth"
 import { supabase } from "../../lib/supabaseCliente"
-import LoadingIndicator from "../../components/ui/loading-indicator"
+import { Skeleton } from "../../components/ui/skeleton"
 
 
 function ProfilePage() {
@@ -118,7 +118,10 @@ function ProfilePage() {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <LoadingIndicator label="Cargando perfil..." />
+        <div className="space-y-4 text-center">
+          <Skeleton className="h-8 w-32 mx-auto" />
+          <Skeleton className="h-4 w-48 mx-auto" />
+        </div>
       </div>
     )
   }

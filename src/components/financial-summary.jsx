@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react"
-import { Loader2, Sparkles, TrendingUp, AlertCircle, CheckCircle2 } from "lucide-react"
+import { Sparkles, TrendingUp, AlertCircle, CheckCircle2 } from "lucide-react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./dialog"
+import { FinancialSummarySkeleton } from "./ui/skeleton"
 import { supabase } from "../lib/supabaseCliente"
 
 const DEFAULT_OPENROUTER_URL =
@@ -382,18 +383,7 @@ function FinancialSummary() {
               )}
 
               {step === "loading" && (
-                <div className="flex flex-col items-center justify-center gap-5 py-16">
-                  <div className="relative flex h-24 w-24 items-center justify-center">
-                    <div className="absolute h-full w-full animate-ping rounded-full bg-primary/20" />
-                    <Loader2 className="size-10 animate-spin text-primary" />
-                  </div>
-                  <div className="space-y-2 text-center">
-                    <p className="text-base font-semibold text-[#111]">Analizando tus transacciones...</p>
-                    <p className="text-sm text-muted-foreground">
-                      Esto puede tomar unos segundos mientras generamos recomendaciones personalizadas.
-                    </p>
-                  </div>
-                </div>
+                <FinancialSummarySkeleton />
               )}
 
               {step === "result" && (
