@@ -41,10 +41,10 @@ function Features() {
           whileHover={{ y: -8 }}
         >
           <MotionHeading2 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4 text-balance" variants={fadeIn}>
-            Comienza a controlar tus finanzas hoy
+            Empeza a controlar tus finanzas hoy
           </MotionHeading2>
           <MotionParagraph className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto" variants={fadeIn}>
-            Únete a miles de usuarios que ya están tomando mejores decisiones financieras
+            Unite a miles de usuarios que ya están tomando mejores decisiones financieras
           </MotionParagraph>
           <MotionButton
             className="text-[#333] h-12 px-8 bg-[#efefef] border-[#efefef] border-2 rounded-xl cursor-pointer"
