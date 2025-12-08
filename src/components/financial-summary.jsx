@@ -68,18 +68,31 @@ const buildPrompt = (transactions) => {
 
   const balance = totals.income - totals.expense
 
-  return `Datos agregados de tus finanzas:
-- Ingresos: ${formatCurrency(totals.income)}
-- Gastos: ${formatCurrency(totals.expense)}
-- Balance: ${formatCurrency(balance)}
+  return `Análisis de datos financieros del usuario:
 
-Distribución principal por categoría:
+RESUMEN FINANCIERO:
+- Ingresos totales: ${formatCurrency(totals.income)}
+- Gastos totales: ${formatCurrency(totals.expense)}
+- Balance neto: ${formatCurrency(balance)}
+
+DISTRIBUCIÓN POR CATEGORÍAS (principales):
 ${categoryLines.length ? categoryLines.join("\n") : "- Sin categorías registradas"}
 
-Movimientos más recientes:
+MOVIMIENTOS RECIENTES (últimos ${Math.min(MAX_RECENT_TRANSACTIONS_IN_PROMPT, limited.length)}):
 ${recentLines.length ? recentLines.join("\n") : "- No hay movimientos registrados"}
 
-Instrucciones: Elaborá un resumen ejecutivo en español. Explica el estado general de las finanzas, resalta patrones relevantes, identifica posibles alertas y propone hasta tres recomendaciones accionables. Mantén el tono cercano pero profesional.`
+CONTEXTO: Usuario de aplicación de finanzas personales en Argentina. Los montos están en pesos argentinos (ARS).
+
+INSTRUCCIONES ESPECÍFICAS:
+1. Estructurá tu respuesta en 3-4 párrafos breves y claros
+2. Primer párrafo: Estado general de las finanzas (balance, situación actual)
+3. Segundo párrafo: Patrones y tendencias principales (dónde gasta más, categorías destacadas)
+4. Tercer párrafo: Alertas y preocupaciones (si las hay)
+5. Cuarto párrafo: 3 recomendaciones concretas y accionables
+6. Usá tono profesional pero cercano y accesible
+7. Evita formato markdown, negritas o listas con viñetas
+8. Sé específico y basate en los datos proporcionados
+9. Si hay balance negativo, mencionalo como área de atención prioritaria`
 }
 
 const extractContentFromResponse = (data) =>
@@ -123,7 +136,7 @@ async function generateSummaryWithOpenRouter(transactions) {
         {
           role: "system",
           content:
-            "Sos un asesor financiero especializado en finanzas personales. Generá un análisis claro, accionables y breves en español.",
+            "Actuá como un asesor financiero experto especializado en finanzas personales para usuarios en Argentina. Tu objetivo es proporcionar análisis claros, estructurados y fácilmente comprensibles que ayuden al usuario a tomar mejores decisiones financieras. Enfocate en insights prácticos y accionables basados exclusivamente en los datos proporcionados. Mantené un tono profesional pero cercano, evitando tecnicismos complejos.",
         },
         {
           role: "user",
