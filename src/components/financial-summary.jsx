@@ -6,8 +6,8 @@ import { supabase } from "../lib/supabaseCliente"
 
 const DEFAULT_OPENROUTER_URL =
   import.meta.env.VITE_OPENROUTER_API_URL ?? "https://openrouter.ai/api/v1/chat/completions"
-const DEFAULT_OPENROUTER_MODEL = import.meta.env.VITE_OPENROUTER_MODEL ?? "x-ai/grok-4.1-mini"
-const OPENROUTER_REFERER = import.meta.env.VITE_OPENROUTER_REFERER ?? window?.location?.origin ?? "https://fintrack.local"
+const DEFAULT_OPENROUTER_MODEL = import.meta.env.VITE_OPENROUTER_MODEL ?? "meta-llama/llama-3.1-8b-instruct:free"
+const OPENROUTER_REFERER = import.meta.env.VITE_OPENROUTER_REFERER ?? window?.location?.origin ?? "https://fintrackgastos.vercel.app"
 const OPENROUTER_TITLE = import.meta.env.VITE_OPENROUTER_TITLE ?? "Fintrack"
 const MAX_TRANSACTIONS_FOR_PROMPT = 120
 const MAX_RECENT_TRANSACTIONS_IN_PROMPT = 20
