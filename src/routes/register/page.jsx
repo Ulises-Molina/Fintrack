@@ -188,7 +188,7 @@ const handleGoogleLogin = async () => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 backdrop-blur-sm">
         <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
           <h2 className="text-xl font-semibold text-[#1a1a1a]">Usuario creado correctamente</h2>
-          <p className="mt-2 text-sm text-[#666]">Confirmá tu cuenta desde el mail que recibiste y ya podes ingresar a Fintrack</p>
+          <p className="mt-2 text-sm text-[#666]">Tu usuario fue creado con exito.</p>
           <div className="mt-6 space-y-3">
             <a
               href="/login"
@@ -196,13 +196,6 @@ const handleGoogleLogin = async () => {
             >
               Ir al login
             </a>
-            <button
-              type="button"
-              onClick={() => setSuccess(false)}
-              className="block w-full rounded-2xl border border-[#d9d9d9] bg-white px-4 py-3 text-sm font-semibold text-[#1a1a1a] transition hover:border-primary hover:text-primary"
-            >
-              Seguir en registro
-            </button>
           </div>
         </div>
       </div>
